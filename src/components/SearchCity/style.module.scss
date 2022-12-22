@@ -1,0 +1,145 @@
+.inner {
+  background-color: $darkCardSubstrateM;
+  border-radius: 30px;
+  box-sizing: border-box;
+}
+
+.inputGroup {
+  background-color: $darkCardSubstrateS;
+  border-radius: 30px;
+  min-width: 290px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: url(@/assets/cursor.png), pointer;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  .input {
+    background-color: transparent;
+    border: none;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+    color: $darkThemeTextColor;
+
+    &:focus {
+      outline: none;
+      cursor: text;
+    }
+  }
+
+  svg {
+    min-width: 14px;
+    height: 14px;
+  }
+}
+
+.showList {
+  border-radius: 20px 20px 0 0;
+}
+
+.search {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  path {
+    stroke: $darkThemeTextColor;
+    opacity: 0.7;
+  }
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.arrow {
+  color: $darkThemeTextColor;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.list {
+  background-color: $darkCardSubstrateS;
+  display: none;
+  flex-direction: column;
+  border-radius: 0 0 30px 30px;
+  padding-bottom: 18px;
+  overflow: hidden;
+  cursor: url(@/assets/cursor.png), pointer;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1;
+
+  &.active {
+    display: flex;
+  }
+
+  &::before {
+    content: "";
+    height: 1px;
+    background-color: $darkThemeTextColor;
+    opacity: 0.1;
+    width: 250px;
+    margin-left: 15px;
+  }
+
+  li {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: $darkThemeTextColor;
+    padding: 5px 15px;
+    width: 100%;
+
+    &:hover {
+      background-color: $darkCardSubstrateL;
+    }
+
+    &:first-of-type {
+      margin-top: 7px;
+    }
+  }
+}
+
+.nothingToShow {
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  background-color: $darkCardSubstrateS;
+  border-radius: 0 0 30px 30px;
+  overflow: hidden;
+  height: 53px;
+  z-index: 1;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+
+  &::before {
+    content: "";
+    display: block;
+    height: 1px;
+    background-color: #ffffff;
+    opacity: 0.1;
+    width: 250px;
+    margin-left: 15px;
+  }
+
+  p {
+    color: $darkThemeTextColor;
+    opacity: 0.5;
+    padding: 10px 15px 18px 15px;
+  }
+}

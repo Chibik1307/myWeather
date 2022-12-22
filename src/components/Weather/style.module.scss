@@ -1,0 +1,122 @@
+.wrapper {
+  overflow: hidden;
+  min-width: 290px;
+  background: $darkBgTheme;
+  border-radius: 30px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  display: flex;
+  row-gap: 5px;
+  position: relative;
+  box-shadow: 2px 8px 10px rgba(17, 20, 32, 0.2);
+
+  .controlsGroup {
+    color: $darkThemeTextColor;
+    display: flex;
+    column-gap: 7px;
+    right: 20px;
+    top: 20px;
+    position: absolute;
+    z-index: 1;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.7;
+      transform: rotate(0);
+      cursor: url(@/assets/cursor.png), pointer;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .forecast {
+    display: none;
+  }
+
+  &.fullMode {
+    padding: 20px 25px;
+    width: 360px;
+    position: relative;
+    display: grid;
+    grid-template-areas:
+      "currentPlate ."
+      "currentPlate details"
+      "currentPlate details"
+      "forecast forecast"
+      "showForecastIcon showForecastIcon";
+
+    .details {
+      grid-area: details;
+    }
+
+    .forecastBtn {
+      grid-area: showForecastIcon;
+      width: 76px;
+      height: 14px;
+      background-color: $darkCardSubstrateM;
+      justify-self: center;
+      border-radius: 15px 15px 0 0;
+      position: absolute;
+      bottom: -20px;
+      color: $darkThemeTextColor;
+
+      &:hover {
+        svg {
+          opacity: 1;
+        }
+      }
+
+      svg {
+        width: 10px;
+        height: 10px;
+        opacity: 0.7;
+        transition: all 0.5s ease;
+      }
+
+      &.opened {
+        svg {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .forecast {
+      grid-area: forecast;
+      display: none;
+
+      &.showForecast {
+        display: flex;
+        margin-top: 5px;
+      }
+    }
+
+    .controlsGroup {
+      right: 25px;
+      top: 20px;
+    }
+  }
+
+  &.lightTheme {
+    background: $lightBgTheme;
+
+    .controlsGroup {
+      color: $darkCardSubstrateL;
+    }
+
+    &.fullMode {
+      .forecastBtn {
+        background-color: $lightCardSubstrateM;
+        color: $darkCardSubstrateL;
+      }
+
+      .forecast {
+        background-color: $lightCardSubstrateM;
+        color: $darkCardSubstrateL;
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+.details {
+  align-self: baseline;
+  width: 170px;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: $darkThemeTextColor;
+  background-color: $darkCardSubstrateM;
+  border-radius: 20px;
+  padding: 7px 20px;
+  box-sizing: border-box;
+  grid-area: details;
+  justify-self: flex-end;
+
+  &.lightTheme {
+    color: $darkCardSubstrateL;
+    background-color: $lightCardSubstrateM;
+  }
+}

@@ -1,0 +1,13 @@
+.parameter {
+  min-width: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: $blueAccent;
+  }
+}

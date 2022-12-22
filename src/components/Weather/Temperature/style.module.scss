@@ -1,0 +1,18 @@
+.temperature {
+  grid-area: temperature;
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
+  text-transform: uppercase;
+  margin-right: 7px;
+
+  &.small {
+    font-size: 27px;
+    line-height: 33px;
+  }
+
+  &.full {
+    font-size: 34px;
+    line-height: 41px;
+  }
+}

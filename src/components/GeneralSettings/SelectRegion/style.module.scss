@@ -1,0 +1,155 @@
+.selectRegion {
+  width: 100%;
+  background-color: $darkCardSubstrateM;
+  box-sizing: border-box;
+  border-radius: 30px;
+  padding: 15px 15px 20px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 7px;
+
+  .labelGroup {
+    display: flex;
+    align-self: flex-start;
+    opacity: 0.7;
+    margin-bottom: 5px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      color: $blueAccent;
+      margin-right: 4px;
+    }
+
+    p {
+      color: $darkThemeTextColor;
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+
+  .addedCities {
+    width: 290px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 7px;
+    color: $darkThemeTextColor;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 18px;
+
+    li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 0 15px;
+      width: 100%;
+      height: 40px;
+      border-radius: 30px;
+      background-color: $darkCardSubstrateS;
+      box-sizing: border-box;
+    }
+
+    .menu {
+      opacity: 0.8;
+      width: 16px;
+      height: 16px;
+      margin-right: 8px;
+      cursor: grab;
+    }
+
+    p {
+      flex-grow: 1;
+    }
+
+    .trash {
+      opacity: 0.4;
+      width: 14px;
+      height: 14px;
+      cursor: url(@/assets/cursor.png), pointer;
+
+      &:hover {
+        path {
+          stroke: $redAccent;
+        }
+      }
+    }
+
+    .citySettings {
+      opacity: 0.4;
+      width: 17px;
+      height: 17px;
+      margin-right: 5px;
+      transform: rotate(0);
+      transition: all .5s ease;
+
+      &:hover {
+        opacity: 1;
+        cursor: url(@/assets/cursor.png), pointer;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  .addGroup {
+    display: flex;
+    flex-direction: column;
+    width: 290px;
+    position: relative;
+
+    button {
+      display: flex;
+      column-gap: 8px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 17px;
+      color: $blueAccent;
+      background-color: transparent;
+      transition: all .5s ease;
+
+      svg {
+        width: 24px;
+        height: 24px;
+        transition: all .5s ease;
+        transform: rotate(0);
+
+        path {
+          stroke: $blueAccent;
+        }
+      }
+
+      &.hidden {
+        display: none;
+      }
+
+      &:hover {
+        svg {
+          transform: rotate(90deg);
+        }
+      }
+
+    }
+
+    .searchCity {
+      display: none;
+
+      &.active {
+        display: flex;
+        flex-direction: column;
+        width: 290px;
+        position: relative;
+      }
+
+    }
+
+
+  }
+}

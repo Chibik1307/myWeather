@@ -1,0 +1,69 @@
+.settings {
+  padding: 30px 20px 20px;
+  max-width: 360px;
+  box-sizing: border-box;
+  position: relative;
+  grid-template-columns: 47% 47%;
+  min-width: 360px;
+  border-radius: 30px;
+  background: $darkBgTheme;
+  display: grid;
+  row-gap: 10px;
+  column-gap: 20px;
+  box-shadow: 2px 8px 10px rgba(17, 20, 32, 0.2);
+  grid-template-areas:
+    "title title"
+    "selectRegion selectRegion"
+    "selectTemp selectTheme"
+    "selectColor selectColor";
+
+  .selectRegion {
+    grid-area: selectRegion;
+  }
+
+  .selectTemp {
+    grid-area: selectTemp;
+  }
+
+  .selectTheme {
+    grid-area: selectTheme;
+  }
+
+  .selectColor {
+    grid-area: selectColor;
+  }
+
+  .title {
+    grid-area: title;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $darkThemeTextColor;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+
+    p {
+      text-align: center;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: $darkThemeTextColor;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      opacity: 0.7;
+      cursor: url(@/assets/cursor.png), pointer;
+      transition: all 0.5s ease;
+
+      &:hover {
+        opacity: 1;
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+.error {
+  background-color: $darkCardSubstrateS;
+  width: 320px;
+  height: 184px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  justify-content: space-between;
+
+  .iconGroup {
+    width: 20px;
+    height: 20px;
+    position: relative;
+
+    svg {
+      position: absolute;
+    }
+
+    .triangle {
+      bottom: 0;
+      left: 0;
+    }
+
+    .mark {
+      bottom: 4px;
+      left: 5px;
+    }
+  }
+
+  h2 {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 21px;
+    text-align: center;
+    color: $darkThemeTextColor;
+  }
+
+  p {
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+    color: $darkThemeTextColor;
+  }
+
+  .button {
+    background-color: $blueAccent;
+    border-radius: 20px;
+    width: 120px;
+    height: 30px;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+    color: $darkThemeTextColor;
+
+    &:hover {
+      background-color: darken($color: $blueAccent, $amount: 10%);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
