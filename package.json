@@ -5,6 +5,8 @@
   "type": "module",
   "homepage": "https://chibik1307.github.io/myWeather/",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -28,6 +30,7 @@
     "@vitejs/plugin-react": "^2.2.0",
     "eslint": "^8.28.0",
     "eslint-plugin-react": "^7.31.11",
+    "gh-pages": "^4.0.0",
     "sass": "^1.56.1",
     "vite": "^3.2.3",
     "vite-plugin-svgr": "^2.2.2"
