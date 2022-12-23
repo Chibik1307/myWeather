@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "https://chibik1307.github.io/myWeather/",
+  base: "/myWeather/",
   resolve: {
     alias: {
       // eslint-disable-next-line no-undef
