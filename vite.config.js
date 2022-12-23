@@ -5,7 +5,7 @@ import svgr from "vite-plugin-svgr";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/myWeather/",
+  base: "https://chibik1307.github.io/myWeather/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
