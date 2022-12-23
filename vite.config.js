@@ -8,7 +8,9 @@ export default defineConfig({
   base: "https://chibik1307.github.io/myWeather/",
   resolve: {
     alias: {
+      // eslint-disable-next-line no-undef
       "@": path.resolve(__dirname, "./src"),
+      // eslint-disable-next-line no-undef
       "~": path.resolve(__dirname, "./public"),
     },
   },

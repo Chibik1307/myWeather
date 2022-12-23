@@ -6,7 +6,7 @@
   "homepage": "https://chibik1307.github.io/myWeather",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
