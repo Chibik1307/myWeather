@@ -74,6 +74,7 @@ const SelectRegion = ({
           Добавить
         </button>
         <SearchCity
+          lightTheme={lightTheme}
           getCityWeather={handleSearchCity}
           className={cn(s.searchCity, { [s.active]: isCitySearch })}
         />

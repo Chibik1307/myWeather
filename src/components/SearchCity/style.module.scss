@@ -1,9 +1,3 @@
-.inner {
-  background-color: $darkCardSubstrateM;
-  border-radius: 30px;
-  box-sizing: border-box;
-}
-
 .inputGroup {
   background-color: $darkCardSubstrateS;
   border-radius: 30px;
@@ -35,6 +29,30 @@
   svg {
     min-width: 14px;
     height: 14px;
+  }
+
+  &.lightTheme {
+    background-color: $lightCardSubstrateS;
+
+    .input {
+      color: $darkCardSubstrateL;
+    }
+
+    .search {
+      path {
+        stroke: $darkCardSubstrateL;
+        opacity: 0.4;
+      }
+    }
+
+    .arrow {
+      color: $darkCardSubstrateL;
+      opacity: 0;
+
+      &.active {
+        opacity: 0.4;
+      }
+    }
   }
 }
 
@@ -88,7 +106,7 @@
     height: 1px;
     background-color: $darkThemeTextColor;
     opacity: 0.1;
-    width: 250px;
+    width: 260px;
     margin-left: 15px;
   }
 
@@ -108,6 +126,22 @@
 
     &:first-of-type {
       margin-top: 7px;
+    }
+  }
+
+  &.lightTheme {
+    background-color: $lightCardSubstrateS;
+
+    &::before {
+      background-color: $darkCardSubstrateL;
+    }
+
+    li {
+      color: $darkCardSubstrateL;
+
+      &:hover {
+        background-color: $lightCardSubstrateL;
+      }
     }
   }
 }
@@ -131,9 +165,9 @@
     content: "";
     display: block;
     height: 1px;
-    background-color: #ffffff;
+    background-color: $lightCardSubstrateS;
     opacity: 0.1;
-    width: 250px;
+    width: 260px;
     margin-left: 15px;
   }
 
@@ -141,5 +175,17 @@
     color: $darkThemeTextColor;
     opacity: 0.5;
     padding: 10px 15px 18px 15px;
+  }
+
+  &.lightTheme {
+    background-color: $lightCardSubstrateS;
+
+    &::before {
+      background-color: $darkCardSubstrateL;
+    }
+
+    p {
+      color: $darkCardSubstrateL;
+    }
   }
 }
