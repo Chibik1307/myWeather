@@ -6,7 +6,13 @@ import { useState } from "react";
 import { useSettings } from "../../../context/settingsContext";
 import { getCityAdapter } from "../../../Helpers/geoposition";
 
-const SelectRegion = ({ className, addWeather, removeWeather }) => {
+const SelectRegion = ({
+  className,
+  addWeather,
+  removeWeather,
+  lightTheme,
+  color,
+}) => {
   const [isCitySearch, setIsCitySearch] = useState(false);
   const { cities, addCity, removeCity, setShowSettings } = useSettings();
 
@@ -31,9 +37,11 @@ const SelectRegion = ({ className, addWeather, removeWeather }) => {
   };
 
   return (
-    <div className={cn(className, s.selectRegion)}>
+    <div
+      className={cn(className, s.selectRegion, { [s.lightTheme]: lightTheme })}
+    >
       <div className={s.labelGroup}>
-        <Icon iconName={"geoIcon"} />
+        <Icon iconName={"geoIcon"} color={color} />
         <p>Округ</p>
       </div>
       <ul className={s.addedCities}>
@@ -60,8 +68,9 @@ const SelectRegion = ({ className, addWeather, removeWeather }) => {
         <button
           onClick={() => setIsCitySearch(true)}
           className={cn({ [s.hidden]: isCitySearch })}
+          style={{ color: color }}
         >
-          <Icon iconName={"addCity"}></Icon>
+          <Icon iconName={"addCity"} color={color}></Icon>
           Добавить
         </button>
         <SearchCity

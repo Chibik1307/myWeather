@@ -1,6 +1,6 @@
 .selectRegion {
   width: 100%;
-  background-color: $darkCardSubstrateM;
+  background: $darkCardSubstrateM;
   box-sizing: border-box;
   border-radius: 30px;
   padding: 15px 15px 20px 15px;
@@ -19,13 +19,12 @@
     svg {
       width: 14px;
       height: 14px;
-      color: $blueAccent;
       margin-right: 4px;
     }
 
     p {
       color: $darkThemeTextColor;
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -86,7 +85,7 @@
       height: 17px;
       margin-right: 5px;
       transform: rotate(0);
-      transition: all .5s ease;
+      transition: all 0.5s ease;
 
       &:hover {
         opacity: 1;
@@ -113,17 +112,13 @@
       line-height: 17px;
       color: $blueAccent;
       background-color: transparent;
-      transition: all .5s ease;
+      transition: all 0.5s ease;
 
       svg {
         width: 24px;
         height: 24px;
-        transition: all .5s ease;
+        transition: all 0.5s ease;
         transform: rotate(0);
-
-        path {
-          stroke: $blueAccent;
-        }
       }
 
       &.hidden {
@@ -135,7 +130,6 @@
           transform: rotate(90deg);
         }
       }
-
     }
 
     .searchCity {
@@ -147,9 +141,24 @@
         width: 290px;
         position: relative;
       }
+    }
+  }
 
+  &.lightTheme {
+    background: $lightCardSubstrateM;
+
+    .labelGroup {
+      p {
+        color: $darkCardSubstrateL;
+      }
     }
 
+    .addedCities {
+      color: $darkCardSubstrateL;
 
+      li {
+        background-color: $lightCardSubstrateS;
+      }
+    }
   }
 }

@@ -1,25 +1,13 @@
 import s from "./style.module.scss";
 import cn from "classnames";
-import Toggle from "@/components/Settings/Toggle";
 import SelectRegion from "@/components/GeneralSettings/SelectRegion";
-import SelectColor from "@/components/Settings/SelectColor";
 import { useSettings } from "../../context/settingsContext";
 import Settings from "@/components/Settings";
 import Icon from "@/components/Icon";
 
 const GeneralSettings = ({ className, addWeather, removeWeather }) => {
-  const {
-    cities,
-    setColor,
-    isCelsiusGeneral,
-    setIsCelsiusGeneral,
-    isLightThemeGeneral,
-    setIsLightThemeGeneral,
-    isShowGeneralSettings,
-    setIsShowGeneralSettings,
-    generalColor,
-    setGeneralColor,
-  } = useSettings();
+  const { cities, isShowGeneralSettings, setIsShowGeneralSettings } =
+    useSettings();
 
   const cityWithShowSettings = cities.find((item) => item.isShowSettings);
 
@@ -27,10 +15,16 @@ const GeneralSettings = ({ className, addWeather, removeWeather }) => {
     return <Settings className={"settings"} city={cityWithShowSettings} />;
   }
 
+  const firstCity = cities[0];
+
   return (
-    <div className={cn(className, s.settings)}>
+    <div
+      className={cn(className, s.settings, {
+        [s.lightTheme]: firstCity.isLightTheme,
+      })}
+    >
       <div className={s.title}>
-        <p>Общие настройки</p>
+        <p>Настройки</p>
         <Icon
           onClick={() => setIsShowGeneralSettings(!isShowGeneralSettings)}
           iconName={"exit"}
@@ -38,37 +32,12 @@ const GeneralSettings = ({ className, addWeather, removeWeather }) => {
       </div>
 
       <SelectRegion
+        lightTheme={firstCity.isLightTheme}
+        color={firstCity.color}
         addWeather={addWeather}
         removeWeather={removeWeather}
         className={s.selectRegion}
       ></SelectRegion>
-
-      <Toggle
-        value={isCelsiusGeneral}
-        change={setIsCelsiusGeneral}
-        className={s.selectTemp}
-        title={"Температура"}
-        toggleName={"scale"}
-        leftIcon={"celsius"}
-        rightIcon={"fahrenheit"}
-      ></Toggle>
-
-      <Toggle
-        value={isLightThemeGeneral}
-        change={setIsLightThemeGeneral}
-        className={s.selectTheme}
-        title={"Тема"}
-        toggleName={"theme"}
-        leftIcon={"lightMode"}
-        rightIcon={"darkMode"}
-      ></Toggle>
-
-      <SelectColor
-        value={generalColor}
-        change={setGeneralColor}
-        setColor={setColor}
-        className={s.selectColor}
-      ></SelectColor>
     </div>
   );
 };

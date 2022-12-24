@@ -66,4 +66,16 @@
       }
     }
   }
+
+  &.lightTheme {
+    background: $lightBgTheme;
+
+    .title {
+      color: $darkCardSubstrateL;
+
+      svg {
+        color: $darkCardSubstrateL;
+      }
+    }
+  }
 }
