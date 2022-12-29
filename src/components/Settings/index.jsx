@@ -16,11 +16,7 @@ const Settings = ({ className, city }) => {
   };
 
   return (
-    <div
-      className={cn(className, s.settings, {
-        [s.lightTheme]: city.isLightTheme,
-      })}
-    >
+    <div className={cn(className, s.settings)}>
       <div className={s.title}>
         <p>Настройки для {`${city.name}`}</p>
         <Icon onClick={() => setShowSettings(city)} iconName={"exit"} />
@@ -34,7 +30,6 @@ const Settings = ({ className, city }) => {
         toggleName={"scale"}
         leftIcon={"celsius"}
         rightIcon={"fahrenheit"}
-        lightTheme={city.isLightTheme}
       ></Toggle>
 
       <Toggle
@@ -45,13 +40,11 @@ const Settings = ({ className, city }) => {
         toggleName={"theme"}
         leftIcon={"lightMode"}
         rightIcon={"darkMode"}
-        lightTheme={city.isLightTheme}
       ></Toggle>
 
       <SelectColor
         city={city}
         setColor={setColor}
-        lightTheme={city.isLightTheme}
         className={s.selectColor}
       ></SelectColor>
     </div>

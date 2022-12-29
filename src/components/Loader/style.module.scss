@@ -1,0 +1,48 @@
+.loader {
+  width: 360px;
+  height: 133px;
+  background: $darkBgTheme;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  .container {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    position: absolute;
+    background-color: red;
+  }
+
+  .ray {
+    transform-origin: center;
+    width: 5%;
+    height: 50%;
+    background-color: aqua;
+    transform: translate(50%, 0);
+  }
+
+  .ray:nth-of-type(2) {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+  .ray:nth-of-type(3) {
+    transform: translate(-50%, 0) rotate(90deg);
+  }
+  .ray:nth-of-type(4) {
+    transform: translate(-50%, 0) rotate(135deg);
+  }
+  .ray:nth-of-type(5) {
+    transform: translate(-50%, 0) rotate(180deg);
+  }
+  .ray:nth-of-type(6) {
+    transform: translate(-50%, 0) rotate(225deg);
+  }
+  .ray:nth-of-type(7) {
+    transform: translate(-50%, 0) rotate(270deg);
+  }
+  .ray:nth-of-type(8) {
+    transform: translate(-50%, 0) rotate(315deg);
+  }
+}

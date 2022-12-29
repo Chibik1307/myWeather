@@ -6,15 +6,10 @@ import { useState } from "react";
 import { useSettings } from "../../../context/settingsContext";
 import { getCityAdapter } from "../../../Helpers/geoposition";
 
-const SelectRegion = ({
-  className,
-  addWeather,
-  removeWeather,
-  lightTheme,
-  color,
-}) => {
+const SelectRegion = ({ className, addWeather, removeWeather }) => {
   const [isCitySearch, setIsCitySearch] = useState(false);
-  const { cities, addCity, removeCity, setShowSettings } = useSettings();
+  const { cities, addCity, removeCity, setShowSettings, staticAccentColor } =
+    useSettings();
 
   const handleSearchCity = async (city) => {
     if (!city.length) {
@@ -37,11 +32,9 @@ const SelectRegion = ({
   };
 
   return (
-    <div
-      className={cn(className, s.selectRegion, { [s.lightTheme]: lightTheme })}
-    >
+    <div className={cn(className, s.selectRegion)}>
       <div className={s.labelGroup}>
-        <Icon iconName={"geoIcon"} color={color} />
+        <Icon iconName={"geoIcon"} color={"#ffffff"} />
         <p>Округ</p>
       </div>
       <ul className={s.addedCities}>
@@ -68,13 +61,12 @@ const SelectRegion = ({
         <button
           onClick={() => setIsCitySearch(true)}
           className={cn({ [s.hidden]: isCitySearch })}
-          style={{ color: color }}
+          style={{ color: "#ffffff" }}
         >
-          <Icon iconName={"addCity"} color={color}></Icon>
+          <Icon iconName={"addCity"} color={"#ffffff"}></Icon>
           Добавить
         </button>
         <SearchCity
-          lightTheme={lightTheme}
           getCityWeather={handleSearchCity}
           className={cn(s.searchCity, { [s.active]: isCitySearch })}
         />

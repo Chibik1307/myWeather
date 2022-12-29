@@ -7,11 +7,13 @@ import Icon from "@/components/Icon";
 import { useSettings } from "./context/settingsContext";
 import { getPositioning } from "./Helpers/geoposition";
 import { getWeather } from "./Helpers/weather";
+import Loader from "./components/Loader";
 
 function App() {
   const { addCity, cities } = useSettings();
   const [weathers, setWeathers] = useState([]);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     autoSearchPosition();
@@ -44,14 +46,14 @@ function App() {
   return (
     <div className={s.container}>
       {/* {error && <Error error={error} />} */}
-
-      {weathers.length ? (
+      {isLoading ? <Loader /> : null}
+      {/* {weathers.length ? (
         <CitiesList
           addWeather={addWeather}
           removeWeather={removeWeather}
           weathers={weathers}
         />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }

@@ -30,30 +30,6 @@
     min-width: 14px;
     height: 14px;
   }
-
-  &.lightTheme {
-    background-color: $lightCardSubstrateS;
-
-    .input {
-      color: $darkCardSubstrateL;
-    }
-
-    .search {
-      path {
-        stroke: $darkCardSubstrateL;
-        opacity: 0.4;
-      }
-    }
-
-    .arrow {
-      color: $darkCardSubstrateL;
-      opacity: 0;
-
-      &.active {
-        opacity: 0.4;
-      }
-    }
-  }
 }
 
 .showList {
@@ -128,22 +104,6 @@
       margin-top: 7px;
     }
   }
-
-  &.lightTheme {
-    background-color: $lightCardSubstrateS;
-
-    &::before {
-      background-color: $darkCardSubstrateL;
-    }
-
-    li {
-      color: $darkCardSubstrateL;
-
-      &:hover {
-        background-color: $lightCardSubstrateL;
-      }
-    }
-  }
 }
 
 .nothingToShow {
@@ -175,17 +135,5 @@
     color: $darkThemeTextColor;
     opacity: 0.5;
     padding: 10px 15px 18px 15px;
-  }
-
-  &.lightTheme {
-    background-color: $lightCardSubstrateS;
-
-    &::before {
-      background-color: $darkCardSubstrateL;
-    }
-
-    p {
-      color: $darkCardSubstrateL;
-    }
   }
 }

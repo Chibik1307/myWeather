@@ -10,12 +10,11 @@ const Toggle = ({
   rightIcon,
   value,
   change,
-  lightTheme,
 }) => {
   return (
-    <div className={cn(className, s.toggle, { [s.lightTheme]: lightTheme })}>
+    <div className={cn(className, s.toggle)}>
       <div className={s.label}>
-        <Icon iconName={toggleName}></Icon>
+        <Icon iconName={toggleName} color={"#ffffff"}></Icon>
         <p>{title}</p>
       </div>
       <div onClick={() => change(!value)} className={s.button}>

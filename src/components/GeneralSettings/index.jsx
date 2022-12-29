@@ -15,14 +15,8 @@ const GeneralSettings = ({ className, addWeather, removeWeather }) => {
     return <Settings className={"settings"} city={cityWithShowSettings} />;
   }
 
-  const firstCity = cities[0];
-
   return (
-    <div
-      className={cn(className, s.settings, {
-        [s.lightTheme]: firstCity.isLightTheme,
-      })}
-    >
+    <div className={cn(className, s.settings)}>
       <div className={s.title}>
         <p>Настройки</p>
         <Icon
@@ -32,8 +26,6 @@ const GeneralSettings = ({ className, addWeather, removeWeather }) => {
       </div>
 
       <SelectRegion
-        lightTheme={firstCity.isLightTheme}
-        color={firstCity.color}
         addWeather={addWeather}
         removeWeather={removeWeather}
         className={s.selectRegion}

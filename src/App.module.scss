@@ -9,3 +9,9 @@
 .onlySelect {
   width: 360px;
 }
+
+@media (width <= 400px) {
+  .container {
+    padding: 15px;
+  }
+}

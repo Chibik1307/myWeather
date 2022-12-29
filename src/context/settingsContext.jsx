@@ -9,9 +9,6 @@ export const useSettings = () => {
 const SettingsProvider = ({ children }) => {
   const [cities, setCities] = useState([]);
   const [isShowGeneralSettings, setIsShowGeneralSettings] = useState(false);
-  const [isCelsiusGeneral, setIsCelsiusGeneral] = useState(true);
-  const [isLightThemeGeneral, setIsLightThemeGeneral] = useState(false);
-  const [generalColor, setGeneralColor] = useState("#349dea");
 
   const setMode = (city) => {
     const newCities = cities.map((item) => {
@@ -126,12 +123,6 @@ const SettingsProvider = ({ children }) => {
     setCities,
     isShowGeneralSettings,
     setIsShowGeneralSettings,
-    isCelsiusGeneral,
-    setIsCelsiusGeneral,
-    isLightThemeGeneral,
-    setIsLightThemeGeneral,
-    generalColor,
-    setGeneralColor,
   };
 
   return (

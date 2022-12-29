@@ -5,7 +5,7 @@ import useDebounce from "@/Hooks/useDebounce";
 import { useState, useRef } from "react";
 import Icon from "@/components/Icon";
 
-const SearchCity = ({ getCityWeather, className, lightTheme }) => {
+const SearchCity = ({ getCityWeather, className }) => {
   const inputEl = useRef(null);
   const [inputActive, setInputActive] = useState(false);
   const [selectCity, setSelectCity] = useState("");
@@ -54,7 +54,7 @@ const SearchCity = ({ getCityWeather, className, lightTheme }) => {
     }
     if (listValue && !listValue.length) {
       return (
-        <div className={cn(s.nothingToShow, { [s.lightTheme]: lightTheme })}>
+        <div className={cn(s.nothingToShow)}>
           <p>Ничего не найдено</p>
         </div>
       );
@@ -63,7 +63,6 @@ const SearchCity = ({ getCityWeather, className, lightTheme }) => {
       <ul
         className={cn(s.list, {
           [s.active]: isShowList,
-          [s.lightTheme]: lightTheme,
         })}
       >
         {listValue.map((item, idx) => {
@@ -84,7 +83,6 @@ const SearchCity = ({ getCityWeather, className, lightTheme }) => {
         className={cn(s.inputGroup, {
           [s.active]: inputActive,
           [s.showList]: isShowList,
-          [s.lightTheme]: lightTheme,
         })}
       >
         <Icon

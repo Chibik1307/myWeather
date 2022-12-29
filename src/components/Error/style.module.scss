@@ -1,5 +1,10 @@
 .error {
-  background-color: $darkCardSubstrateS;
+  background: linear-gradient(
+    119.73deg,
+    #1c2039 10.57%,
+    #121420 88.75%,
+    #161b31 88.75%
+  );
   width: 320px;
   height: 184px;
   border-radius: 20px;
@@ -52,7 +57,6 @@
   }
 
   .button {
-    background-color: $blueAccent;
     border-radius: 20px;
     width: 120px;
     height: 30px;
@@ -64,9 +68,9 @@
     text-align: center;
     color: $darkThemeTextColor;
 
-    &:hover {
-      background-color: darken($color: $blueAccent, $amount: 10%);
-      transition: all 0.2s ease-in-out;
-    }
+    // &:hover {
+    //   background: white;
+    //   transition: all 0.2s ease-in-out;
+    // }
   }
 }

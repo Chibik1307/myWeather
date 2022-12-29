@@ -54,7 +54,6 @@
     svg {
       width: 20px;
       height: 20px;
-      color: $darkThemeTextColor;
       position: absolute;
       top: 20px;
       right: 20px;
@@ -65,18 +64,6 @@
       &:hover {
         opacity: 1;
         transform: rotate(90deg);
-      }
-    }
-  }
-
-  &.lightTheme {
-    background: $lightBgTheme;
-
-    .title {
-      color: $darkCardSubstrateL;
-
-      svg {
-        color: $darkCardSubstrateL;
       }
     }
   }

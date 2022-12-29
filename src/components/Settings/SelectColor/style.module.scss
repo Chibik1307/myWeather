@@ -9,10 +9,8 @@
   color: $darkThemeTextColor;
 
   svg {
-    color: $blueAccent;
     width: 15px;
     height: 15px;
-    opacity: 0.7;
   }
 
   p {
@@ -47,10 +45,11 @@
         opacity: 1;
       }
     }
-  }
 
-  &.lightTheme {
-    color: $darkCardSubstrateL;
-    background: $lightCardSubstrateM;
+    &.active {
+      &::after {
+        opacity: 1;
+      }
+    }
   }
 }
