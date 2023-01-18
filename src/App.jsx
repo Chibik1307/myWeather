@@ -48,6 +48,7 @@ function App() {
 
   return (
     <div className={s.container}>
+<<<<<<< HEAD
       {error ? (
         <Error
           error={{
@@ -61,15 +62,24 @@ function App() {
       ) : null}
       {/* {isLoading ? <Loader /> : null} */}
       {weathers.length ? (
+=======
+      {/* {error && <Error error={error} />} */}
+      {isLoading ? <Loader /> : null}
+      {/* {weathers.length ? (
+>>>>>>> abd1a5dba684ad57c9068a27a20dd994d1747a17
         <CitiesList
           addWeather={addWeather}
           removeWeather={removeWeather}
           weathers={weathers}
         />
+<<<<<<< HEAD
       ) : null}
       {selectRegion && !cities.length ? (
         <SearchLocation handle={setSelectRegion} addWeather={addWeather} />
       ) : null}
+=======
+      ) : null} */}
+>>>>>>> abd1a5dba684ad57c9068a27a20dd994d1747a17
     </div>
   );
 }
