@@ -46,14 +46,14 @@ function App() {
   return (
     <div className={s.container}>
       {/* {error && <Error error={error} />} */}
-      {/* {isLoading ? <Loader /> : null} */}
-      {weathers.length ? (
+      {isLoading ? <Loader /> : null}
+      {/* {weathers.length ? (
         <CitiesList
           addWeather={addWeather}
           removeWeather={removeWeather}
           weathers={weathers}
         />
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
