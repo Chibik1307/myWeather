@@ -1,19 +1,11 @@
 import s from "./style.module.scss";
+import Icon from "@/components/Icon";
 
 const Loader = () => {
   return (
     <div className={s.loader}>
-      <div className={s.container}>
-        {/* <div className={s.circle}></div> */}
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-        <div className={s.ray}></div>
-      </div>
+      <div className={s.substrate} />
+      <Icon iconName={"loader22"} />
     </div>
   );
 };

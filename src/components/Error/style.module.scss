@@ -1,39 +1,23 @@
+.substrate {
+  width: 360px;
+  height: 133px;
+  background: $darkBgTheme;
+  border-radius: 30px;
+}
+
 .error {
-  background: linear-gradient(
-    119.73deg,
-    #1c2039 10.57%,
-    #121420 88.75%,
-    #161b31 88.75%
-  );
+  position: absolute;
+  background: $darkCardSubstrateS;
   width: 320px;
   height: 184px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  margin: 15px 20px 0 20px;
+  padding: 20px 22px 24px 22px;
   box-sizing: border-box;
   justify-content: space-between;
-
-  .iconGroup {
-    width: 20px;
-    height: 20px;
-    position: relative;
-
-    svg {
-      position: absolute;
-    }
-
-    .triangle {
-      bottom: 0;
-      left: 0;
-    }
-
-    .mark {
-      bottom: 4px;
-      left: 5px;
-    }
-  }
 
   h2 {
     margin: 0;
@@ -51,7 +35,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
-    line-height: 17px;
+    line-height: 16px;
     text-align: center;
     color: $darkThemeTextColor;
   }
@@ -66,11 +50,11 @@
     font-size: 12px;
     line-height: 17px;
     text-align: center;
-    color: $darkThemeTextColor;
+    color: $darkCardSubstrateS;
 
-    // &:hover {
-    //   background: white;
-    //   transition: all 0.2s ease-in-out;
-    // }
+    &:hover {
+      background: white;
+      transition: all 0.2s ease-in-out;
+    }
   }
 }

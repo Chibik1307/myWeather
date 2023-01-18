@@ -1,15 +1,14 @@
 import s from "./style.module.scss";
 import cn from "classnames";
 import Icon from "@/components/Icon";
-import SearchCity from "../../SearchCity/SearchCity";
+import SearchCity from "@/components/SearchCity/SearchCity";
 import { useState } from "react";
-import { useSettings } from "../../../context/settingsContext";
-import { getCityAdapter } from "../../../Helpers/geoposition";
+import { useSettings } from "@/context/settingsContext";
+import { getCityAdapter } from "@/Helpers/geoposition";
 
 const SelectRegion = ({ className, addWeather, removeWeather }) => {
   const [isCitySearch, setIsCitySearch] = useState(false);
-  const { cities, addCity, removeCity, setShowSettings, staticAccentColor } =
-    useSettings();
+  const { cities, addCity, removeCity, setShowSettings } = useSettings();
 
   const handleSearchCity = async (city) => {
     if (!city.length) {

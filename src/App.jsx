@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import s from "./App.module.scss";
+import cn from "classnames";
 import GeneralSettings from "@/components/GeneralSettings";
 import Error from "@/components/Error/Error";
 import CitiesList from "./components/CitiesList";
@@ -8,15 +9,20 @@ import { useSettings } from "./context/settingsContext";
 import { getPositioning } from "./Helpers/geoposition";
 import { getWeather } from "./Helpers/weather";
 import Loader from "./components/Loader";
+import SearchLocation from "./components/SearchLocation";
 
 function App() {
   const { addCity, cities } = useSettings();
   const [weathers, setWeathers] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectRegion, setSelectRegion] = useState(false);
 
   useEffect(() => {
     autoSearchPosition();
+    if (!cities.length) {
+      setError("error");
+    }
   }, []);
 
   const autoSearchPosition = async () => {
@@ -35,17 +41,24 @@ function App() {
     setWeathers(newWeatherList);
   };
 
-  // if (!cities.length) {
-  //   return (
-  //     <div className={s.container}>
-  //       <SelectRegion addWeather={addWeather} removeWeather={removeWeather} />
-  //     </div>
-  //   );
-  // }
+  const handleLocationError = () => {
+    setError(null);
+    setSelectRegion(true);
+  };
 
   return (
     <div className={s.container}>
-      {/* {error && <Error error={error} />} */}
+      {error ? (
+        <Error
+          error={{
+            icon: "locaionError",
+            title: "Не удалось определить местоположение",
+            text: "Пожалуйста введите город вручную",
+            btnText: "Ввести",
+            btnAction: handleLocationError,
+          }}
+        />
+      ) : null}
       {/* {isLoading ? <Loader /> : null} */}
       {weathers.length ? (
         <CitiesList
@@ -54,19 +67,11 @@ function App() {
           weathers={weathers}
         />
       ) : null}
+      {selectRegion && !cities.length ? (
+        <SearchLocation handle={setSelectRegion} addWeather={addWeather} />
+      ) : null}
     </div>
   );
 }
 
 export default App;
-
-// return (
-//   <Error
-//     error={{
-//       icon: "locationError",
-//       title: "Не удалось определить местоположение",
-//       text: "Пожалуйста введите город вручную",
-//       btnText: "Ввести",
-//     }}
-//   />
-// );
