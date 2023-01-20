@@ -4,9 +4,11 @@ import { getCity } from "@/Helpers/weather";
 import useDebounce from "@/Hooks/useDebounce";
 import { useState, useRef } from "react";
 import Icon from "@/components/Icon";
+import { useSettings } from "../../context/settingsContext";
 
 const SearchCity = ({ getCityWeather, className }) => {
   const inputEl = useRef(null);
+  const { setIsLoading } = useSettings();
   const [inputActive, setInputActive] = useState(false);
   const [selectCity, setSelectCity] = useState("");
   const [listValue, setListValue] = useState(null);
@@ -44,8 +46,10 @@ const SearchCity = ({ getCityWeather, className }) => {
   };
 
   const acceptCelectCity = async (city) => {
+    setIsLoading(true);
     await getCityWeather(city);
     setSelectCity("");
+    setIsLoading(false);
   };
 
   const renderList = () => {

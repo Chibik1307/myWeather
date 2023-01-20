@@ -8,6 +8,7 @@ export const useSettings = () => {
 
 const SettingsProvider = ({ children }) => {
   const [cities, setCities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [isShowGeneralSettings, setIsShowGeneralSettings] = useState(false);
 
   const setMode = (city) => {
@@ -123,6 +124,8 @@ const SettingsProvider = ({ children }) => {
     setCities,
     isShowGeneralSettings,
     setIsShowGeneralSettings,
+    isLoading,
+    setIsLoading,
   };
 
   return (

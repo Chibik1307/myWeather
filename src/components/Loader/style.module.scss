@@ -1,43 +1,29 @@
 .container {
+  margin: 30px 30px;
   width: 360px;
   height: 133px;
-<<<<<<< HEAD
-  position: relative;
-
-  .substrate {
-    width: 40px;
-    height: 40px;
-    background: red;
-    border-radius: 50px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: -1;
-  }
-
-  svg {
-    max-width: 360px;
-    max-height: 133px;
-=======
-  // background: $darkBgTheme;
-  border-radius: 30px;
-  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
+
+  .substrate {
+    max-width: 100%;
+    max-height: 100%;
+    position: relative;
+  }
 
   .loader {
-    width: 72px;
-    height: 72px;
+    width: 36px;
+    height: 36px;
     border-radius: 100%;
     overflow: hidden;
     background: #fff;
     transform: rotate(205deg);
     position: absolute;
+    animation-name: substrateColor;
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
 
     & > div {
       position: absolute;
@@ -62,7 +48,10 @@
       .loaderPart {
         z-index: -1;
         transform-origin: 0 50%;
-        animation: loading-left 5s linear infinite;
+        animation-name: loading-left, timerColor;
+        animation-duration: 1s, 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
       }
     }
 
@@ -73,22 +62,11 @@
         z-index: -1;
         transform-origin: 100% 50%;
         left: -100%;
-        animation: loading-right 5s linear infinite;
+        animation-name: loading-right, timerColor;
+        animation-duration: 1s, 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
       }
-    }
-  }
-
-  svg {
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    position: absolute;
-    max-width: 100%;
-    max-height: 100%;
-    path {
-      stroke-width: 0.2;
-      // stroke: red;
-      fill: blue;
     }
   }
 
@@ -118,6 +96,29 @@
     100% {
       transform: rotate(180deg);
     }
->>>>>>> abd1a5dba684ad57c9068a27a20dd994d1747a17
+  }
+
+  @keyframes substrateColor {
+    0%,
+    49.99% {
+      background: #fff;
+    }
+
+    50%,
+    100% {
+      background: $blueAccent;
+    }
+  }
+
+  @keyframes timerColor {
+    0%,
+    49.99% {
+      background: $blueAccent;
+    }
+
+    50%,
+    100% {
+      background: #fff;
+    }
   }
 }

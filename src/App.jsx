@@ -12,21 +12,24 @@ import Loader from "./components/Loader";
 import SearchLocation from "./components/SearchLocation";
 
 function App() {
-  const { addCity, cities } = useSettings();
+  const { addCity, cities, isLoading, setIsLoading } = useSettings();
   const [weathers, setWeathers] = useState([]);
   const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const [selectRegion, setSelectRegion] = useState(false);
 
   useEffect(() => {
     autoSearchPosition();
-    if (!cities.length) {
-      setError("error");
-    }
   }, []);
 
   const autoSearchPosition = async () => {
-    const foundedCity = await getPositioning();
+    setIsLoading(true);
+    const foundedCity = await getPositioning().finally(() => {
+      setIsLoading(false);
+    });
+    if (!foundedCity) {
+      setError(true);
+      return;
+    }
     addCity(foundedCity);
     addWeather(foundedCity);
   };
@@ -46,7 +49,9 @@ function App() {
     setSelectRegion(true);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className={s.container}>
       {error ? (
         <Error
@@ -59,7 +64,6 @@ function App() {
           }}
         />
       ) : null}
-      {/* {isLoading ? <Loader /> : null} */}
       {weathers.length ? (
         <CitiesList
           addWeather={addWeather}

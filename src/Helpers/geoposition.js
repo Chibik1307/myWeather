@@ -4,12 +4,10 @@ const getCurCoordinates = () => {
   const geo = navigator.geolocation;
 
   return new Promise((resolve, reject) => {
-    geo.getCurrentPosition((success) => {
-      return resolve(success);
-    }),
-      (error) => {
-        return reject(error);
-      };
+    geo.getCurrentPosition(
+      (success) => resolve(success),
+      (error) => reject(error)
+    );
   });
 };
 
@@ -32,7 +30,7 @@ const getPositioning = async () => {
     const city = await getCityAdapter(`${latitude},${longitude}`);
     return city;
   } catch (err) {
-    return err;
+    return null;
   }
 };
 

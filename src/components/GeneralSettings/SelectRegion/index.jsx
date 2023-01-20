@@ -8,9 +8,11 @@ import { getCityAdapter } from "@/Helpers/geoposition";
 
 const SelectRegion = ({ className, addWeather, removeWeather }) => {
   const [isCitySearch, setIsCitySearch] = useState(false);
-  const { cities, addCity, removeCity, setShowSettings } = useSettings();
+  const { cities, addCity, removeCity, setShowSettings, setIsLoading } =
+    useSettings();
 
   const handleSearchCity = async (city) => {
+    setIsLoading(true);
     if (!city.length) {
       setIsCitySearch(false);
       return;
@@ -19,6 +21,7 @@ const SelectRegion = ({ className, addWeather, removeWeather }) => {
     const foundedCity = await getCityAdapter(city);
     addCity(foundedCity);
     addWeather(foundedCity);
+    setIsLoading(false);
   };
 
   const handleDelete = (city) => {
