@@ -41,7 +41,7 @@ const adapterWeather = (weatherResult) => {
       const getMinutes = (unixTime) => {
         const minutes = new Date(unixTime * 1000).getMinutes();
         if (minutes.length !== 2) {
-          return `${minutes}0`;
+          return "00";
         }
         return minutes;
       };
@@ -88,13 +88,14 @@ async function getWeather(city) {
 }
 
 async function getCity(query) {
+  if (!query.trim()) return;
   const url = `${CITIES}?key=${APIKEY}&lang=ru&q=${query}`;
   try {
     const resolve = await fetch(url);
     const resToJson = await resolve.json();
     return resToJson;
   } catch (err) {
-    return err;
+    return null;
   }
 }
 

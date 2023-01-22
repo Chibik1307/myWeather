@@ -42,6 +42,7 @@ function App() {
   const removeWeather = (city) => {
     const newWeatherList = weathers.filter((item) => item.id !== city.id);
     setWeathers(newWeatherList);
+    setSelectRegion(true);
   };
 
   const handleLocationError = () => {

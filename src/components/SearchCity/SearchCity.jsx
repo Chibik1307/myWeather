@@ -28,7 +28,7 @@ const SearchCity = ({ getCityWeather, className }) => {
   };
 
   const loadCities = async (query) => {
-    if (!query) return;
+    if (!query.trim()) return;
     const cities = await getCity(query);
     setListValue(cities.map((item) => item.name));
   };
@@ -46,6 +46,7 @@ const SearchCity = ({ getCityWeather, className }) => {
   };
 
   const acceptCelectCity = async (city) => {
+    if (!city) return;
     setIsLoading(true);
     await getCityWeather(city);
     setSelectCity("");

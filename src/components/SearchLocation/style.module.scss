@@ -33,7 +33,8 @@
   }
 }
 
-.separateInput :last-child {
+.separateInput ul:last-child,
+.separateInput div:last-child {
   top: 100px;
   width: 290px;
 }
