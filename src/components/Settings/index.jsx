@@ -3,6 +3,7 @@ import cn from "classnames";
 import Toggle from "@/components/Settings/Toggle";
 import SelectColor from "@/components/Settings/SelectColor";
 import { useSettings } from "../../context/settingsContext";
+import useTruncate from "@/Hooks/useTruncate";
 import Icon from "@/components/Icon";
 
 const Settings = ({ className, city }) => {
@@ -18,7 +19,7 @@ const Settings = ({ className, city }) => {
   return (
     <div className={cn(className, s.settings)}>
       <div className={s.title}>
-        <p>Настройки для {`${city.name}`}</p>
+        <p>Настройки для {`${useTruncate(city.name, 12)}`}</p>
         <Icon onClick={() => setShowSettings(city)} iconName={"exit"} />
       </div>
 
