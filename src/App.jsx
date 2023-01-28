@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
 import s from "./App.module.scss";
-import cn from "classnames";
-import GeneralSettings from "@/components/GeneralSettings";
 import Error from "@/components/Error/Error";
 import CitiesList from "./components/CitiesList";
-import Icon from "@/components/Icon";
 import { useSettings } from "./context/settingsContext";
 import { getPositioning } from "./Helpers/geoposition";
 import { getWeather } from "./Helpers/weather";
 import Loader from "./components/Loader";
 import SearchLocation from "./components/SearchLocation";
+import { getLocalStorage } from "./Hooks/useLocalStorage";
 
 function App() {
-  const { addCity, cities, isLoading, setIsLoading } = useSettings();
+  const { addCity, cities, setCities, isLoading, setIsLoading } = useSettings();
   const [weathers, setWeathers] = useState([]);
   const [error, setError] = useState(null);
   const [selectRegion, setSelectRegion] = useState(false);

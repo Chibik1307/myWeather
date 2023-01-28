@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { setLocalStorage, getLocalStorage } from "@/Hooks/useLocalStorage";
 
 const SettingsContext = createContext({});
 
@@ -10,6 +11,10 @@ const SettingsProvider = ({ children }) => {
   const [cities, setCities] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isShowGeneralSettings, setIsShowGeneralSettings] = useState(false);
+
+  useEffect(() => {
+    setLocalStorage("settings", cities);
+  }, [cities]);
 
   const setMode = (city) => {
     const newCities = cities.map((item) => {
@@ -80,10 +85,7 @@ const SettingsProvider = ({ children }) => {
   const addCity = (city) => {
     const isCityExist = () => cities.find((item) => item.id === city.id);
 
-    if (isCityExist()) {
-      // alert("Такой город уже добавлен");
-      return;
-    }
+    if (isCityExist()) return;
 
     const newCities = [
       ...cities,
