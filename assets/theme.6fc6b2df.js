@@ -1,0 +1,1 @@
+import{r as e}from"./index.99957d58.js";const r=t=>e.exports.createElement("svg",{viewBox:"0 0 14 13",fill:"none",...t},e.exports.createElement("path",{d:"M7 1L8.854 4.756L13 5.362L10 8.284L10.708 12.412L7 10.462L3.292 12.412L4 8.284L1 5.362L5.146 4.756L7 1Z",stroke:"currentColor"})),s="/myWeather/assets/theme.db15e938.svg";export{r as ReactComponent,s as default};
