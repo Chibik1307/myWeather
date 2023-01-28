@@ -44,7 +44,8 @@
 
 html {
   height: 100%;
-  background-image: url(@/assets/background.jpg);
+  background: linear-gradient(119.73deg, #4e5681 10.57%, #171a29 88.75%);
+  background: no-repeat center url(@/assets/background.jpg);
 }
 
 body {
@@ -59,7 +60,6 @@ body {
   font-weight: 500;
   font-size: 14px;
   line-height: 17px;
-  // background: $lightBgTheme;
 }
 
 svg {
