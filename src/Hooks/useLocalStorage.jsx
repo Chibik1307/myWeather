@@ -1,5 +1,7 @@
 const getLocalStorage = (key) => {
-  return JSON.parse(localStorage.getItem(key));
+  const data = localStorage.getItem(key);
+  if (!data) return;
+  return JSON.parse(data);
 };
 
 const setLocalStorage = (key, value) => {

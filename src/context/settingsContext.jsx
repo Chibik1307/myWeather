@@ -8,7 +8,10 @@ export const useSettings = () => {
 };
 
 const SettingsProvider = ({ children }) => {
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState(() => {
+    const savedSettings = getLocalStorage("settings");
+    return savedSettings ? savedSettings : [];
+  });
   const [isLoading, setIsLoading] = useState(false);
   const [isShowGeneralSettings, setIsShowGeneralSettings] = useState(false);
 
@@ -83,9 +86,9 @@ const SettingsProvider = ({ children }) => {
   };
 
   const addCity = (city) => {
-    const isCityExist = () => cities.find((item) => item.id === city.id);
+    const isCityExist = cities.find((item) => item.id === city.id);
 
-    if (isCityExist()) return;
+    if (isCityExist) return;
 
     const newCities = [
       ...cities,

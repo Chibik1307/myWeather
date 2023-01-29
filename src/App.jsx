@@ -7,17 +7,24 @@ import { getPositioning } from "./Helpers/geoposition";
 import { getWeather } from "./Helpers/weather";
 import Loader from "./components/Loader";
 import SearchLocation from "./components/SearchLocation";
-import { getLocalStorage } from "./Hooks/useLocalStorage";
+import { setLocalStorage, getLocalStorage } from "./Hooks/useLocalStorage";
 
 function App() {
-  const { addCity, cities, setCities, isLoading, setIsLoading } = useSettings();
-  const [weathers, setWeathers] = useState([]);
+  const { addCity, cities, isLoading, setIsLoading } = useSettings();
+  const [weathers, setWeathers] = useState(() => {
+    const savedWeathers = getLocalStorage("weathers");
+    return savedWeathers ? savedWeathers : [];
+  });
   const [error, setError] = useState(null);
   const [selectRegion, setSelectRegion] = useState(false);
 
   useEffect(() => {
     autoSearchPosition();
   }, []);
+
+  useEffect(() => {
+    setLocalStorage("weathers", weathers);
+  }, [weathers]);
 
   const autoSearchPosition = async () => {
     setIsLoading(true);
@@ -34,6 +41,8 @@ function App() {
 
   const addWeather = async (city) => {
     const foundedWeather = await getWeather(city.name);
+    const isWeatherExist = weathers.find((item) => item.id === city.id);
+    if (isWeatherExist) return;
     setWeathers([...weathers, { ...foundedWeather, ...city }]);
   };
 

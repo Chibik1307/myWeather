@@ -43,11 +43,12 @@
 }
 
 html {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
   background: linear-gradient(119.73deg, #4e5681 10.57%, #171a29 88.75%);
-  background: no-repeat center url(@/assets/background.jpg);
-  background-size: cover;
+  background-image: url(@/assets/background.png);
+  background-repeat: repeat-y;
+  background-position: center;
+  background-size: 100%;
 }
 
 body {
