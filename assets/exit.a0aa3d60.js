@@ -1,0 +1,1 @@
+import{r as t}from"./index.a6e28617.js";const o=e=>t.exports.createElement("svg",{fill:"currentColor",...e},t.exports.createElement("path",{d:"M17.5 2.5L2.5 17.5",stroke:"currentColor",strokeWidth:1.5}),t.exports.createElement("path",{d:"M2.5 2.5L17.5 17.5",stroke:"currentColor",strokeWidth:1.5})),s="/myWeather/assets/exit.0299803d.svg";export{o as ReactComponent,s as default};
