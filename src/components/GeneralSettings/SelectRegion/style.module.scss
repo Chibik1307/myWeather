@@ -42,7 +42,7 @@
     font-size: 15px;
     line-height: 18px;
 
-    li {
+    .item {
       display: flex;
       justify-content: flex-start;
       align-items: center;
@@ -58,7 +58,6 @@
       opacity: 0.8;
       width: 16px;
       height: 16px;
-      margin-right: 8px;
       cursor: grab;
     }
 
@@ -143,5 +142,12 @@
         position: relative;
       }
     }
+  }
+
+  .dragHandler {
+    position: static;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
   }
 }

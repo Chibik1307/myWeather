@@ -5,7 +5,13 @@ import { useSettings } from "../../context/settingsContext";
 import Settings from "@/components/Settings";
 import Icon from "@/components/Icon";
 
-const GeneralSettings = ({ className, addWeather, removeWeather }) => {
+const GeneralSettings = ({
+  className,
+  addWeather,
+  removeWeather,
+  weathers,
+  setWeathers,
+}) => {
   const { cities, isShowGeneralSettings, setIsShowGeneralSettings } =
     useSettings();
 
@@ -15,14 +21,21 @@ const GeneralSettings = ({ className, addWeather, removeWeather }) => {
     return <Settings className={"settings"} city={cityWithShowSettings} />;
   }
 
+  const closeBtnHandler = () => {
+    const newWeathers = cities.reduce((acc, cur) => {
+      const foundWeather = weathers.find((el) => el.id === cur.id);
+      if (foundWeather) acc.push(foundWeather);
+      return acc;
+    }, []);
+    setWeathers(newWeathers);
+    setIsShowGeneralSettings(!isShowGeneralSettings);
+  };
+
   return (
     <div className={cn(className, s.settings)}>
       <div className={s.title}>
         <p>Настройки</p>
-        <Icon
-          onClick={() => setIsShowGeneralSettings(!isShowGeneralSettings)}
-          iconName={"exit"}
-        />
+        <Icon onClick={() => closeBtnHandler()} iconName={"exit"} />
       </div>
 
       <SelectRegion

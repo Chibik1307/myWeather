@@ -3,7 +3,7 @@ import s from "./style.module.scss";
 import GeneralSettings from "@/components/GeneralSettings";
 import { useSettings } from "../../context/settingsContext";
 
-const CitiesList = ({ weathers, addWeather, removeWeather }) => {
+const CitiesList = ({ weathers, setWeathers, addWeather, removeWeather }) => {
   const { isShowGeneralSettings } = useSettings();
 
   return (
@@ -11,6 +11,8 @@ const CitiesList = ({ weathers, addWeather, removeWeather }) => {
       {isShowGeneralSettings ? (
         <GeneralSettings
           className={"settings"}
+          weathers={weathers}
+          setWeathers={setWeathers}
           addWeather={addWeather}
           removeWeather={removeWeather}
         />

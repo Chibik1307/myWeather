@@ -5,11 +5,18 @@ import SearchCity from "@/components/SearchCity/SearchCity";
 import { useState } from "react";
 import { useSettings } from "@/context/settingsContext";
 import { getCityAdapter } from "@/Helpers/geoposition";
+import { SortableItem, SortableList } from "@thaddeusjiang/react-sortable-list";
 
 const SelectRegion = ({ className, addWeather, removeWeather }) => {
   const [isCitySearch, setIsCitySearch] = useState(false);
-  const { cities, addCity, removeCity, setShowSettings, setIsLoading } =
-    useSettings();
+  const {
+    cities,
+    setCities,
+    addCity,
+    removeCity,
+    setShowSettings,
+    setIsLoading,
+  } = useSettings();
 
   const handleSearchCity = async (city) => {
     setIsLoading(true);
@@ -33,32 +40,48 @@ const SelectRegion = ({ className, addWeather, removeWeather }) => {
     setShowSettings(city);
   };
 
+  const DragHandler = (props) => (
+    <div {...props} className={s.dragHandler} title="drag handler">
+      <Icon className={s.menu} iconName={"menu"}></Icon>
+    </div>
+  );
+
   return (
     <div className={cn(className, s.selectRegion)}>
       <div className={s.labelGroup}>
         <Icon iconName={"geoIcon"} color={"#ffffff"} />
         <p>Округ</p>
       </div>
-      <ul className={s.addedCities}>
-        {cities.map((city, idx) => {
-          return (
-            <li key={idx}>
-              <Icon className={s.menu} iconName={"menu"}></Icon>
-              <p>{city.name}</p>
-              <Icon
-                onClick={() => handleCitySettings(city)}
-                className={s.citySettings}
-                iconName={"citySettings"}
-              ></Icon>
-              <Icon
-                onClick={() => handleDelete(city)}
-                className={s.trash}
-                iconName={"trash"}
-              ></Icon>
-            </li>
-          );
-        })}
-      </ul>
+
+      <div className={s.addedCities}>
+        <SortableList items={cities} setItems={setCities}>
+          {({ items }) => (
+            <>
+              {items.map((city) => (
+                <SortableItem
+                  DragHandler={DragHandler}
+                  key={city.id}
+                  id={city.id}
+                  className={s.item}
+                >
+                  <p>{city.name}</p>
+                  <Icon
+                    onClick={() => handleCitySettings(city)}
+                    className={s.citySettings}
+                    iconName={"citySettings"}
+                  ></Icon>
+                  <Icon
+                    onClick={() => handleDelete(city)}
+                    className={s.trash}
+                    iconName={"trash"}
+                  ></Icon>
+                </SortableItem>
+              ))}
+            </>
+          )}
+        </SortableList>
+      </div>
+
       <div className={s.addGroup}>
         <button
           onClick={() => setIsCitySearch(true)}

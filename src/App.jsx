@@ -77,6 +77,7 @@ function App() {
           addWeather={addWeather}
           removeWeather={removeWeather}
           weathers={weathers}
+          setWeathers={setWeathers}
         />
       ) : null}
       {selectRegion && !cities.length ? (
