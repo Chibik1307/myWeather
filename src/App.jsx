@@ -22,12 +22,6 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    setWeathers(
-      cities.map((city) => weathers.find((item) => item.id === city.id))
-    );
-  }, [cities]);
-
   const loadingWeathers = async () => {
     setIsWeathersLoaded(false);
     const foundedWeathers = await Promise.all(
@@ -90,7 +84,6 @@ function App() {
           addWeather={addWeather}
           removeWeather={removeWeather}
           weathers={weathers}
-          loadingWeathers={loadingWeathers}
           setWeathers={setWeathers}
         />
       ) : null}
