@@ -11,6 +11,7 @@ const GeneralSettings = ({
   removeWeather,
   weathers,
   setWeathers,
+  loadingWeathers,
 }) => {
   const { cities, isShowGeneralSettings, setIsShowGeneralSettings } =
     useSettings();
@@ -21,21 +22,19 @@ const GeneralSettings = ({
     return <Settings className={"settings"} city={cityWithShowSettings} />;
   }
 
-  const closeBtnHandler = () => {
-    const newWeathers = cities.reduce((acc, cur) => {
-      const foundWeather = weathers.find((el) => el.id === cur.id);
-      if (foundWeather) acc.push(foundWeather);
-      return acc;
-    }, []);
-    setWeathers(newWeathers);
-    setIsShowGeneralSettings(!isShowGeneralSettings);
-  };
+  // const closeBtnHandler = () => {
+  //   loadingWeathers();
+  //   ;
+  // };
 
   return (
     <div className={cn(className, s.settings)}>
       <div className={s.title}>
         <p>Настройки</p>
-        <Icon onClick={() => closeBtnHandler()} iconName={"exit"} />
+        <Icon
+          onClick={() => setIsShowGeneralSettings(!isShowGeneralSettings)}
+          iconName={"exit"}
+        />
       </div>
 
       <SelectRegion

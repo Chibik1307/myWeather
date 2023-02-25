@@ -46,9 +46,9 @@ html {
   height: 100vh;
   background: linear-gradient(119.73deg, #4e5681 10.57%, #171a29 88.75%);
   background-image: url(@/assets/background.jpg);
-  background-repeat: repeat-y;
   background-position: center;
   background-size: 100%;
+  background-attachment: fixed;
 }
 
 body {

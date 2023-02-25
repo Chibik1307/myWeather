@@ -4,6 +4,7 @@ import Icon from "@/components/Icon";
 const Loader = () => {
   return (
     <div className={s.container}>
+      <Icon className={s.substrate} iconName={"loader"} />
       <div className={s.loader}>
         <div className={s.leftWrap}>
           <div className={s.loaderPart}></div>
@@ -12,7 +13,6 @@ const Loader = () => {
           <div className={s.loaderPart}></div>
         </div>
       </div>
-      <Icon className={s.substrate} iconName={"loader22"} />
     </div>
   );
 };

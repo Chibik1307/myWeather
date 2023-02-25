@@ -7,24 +7,37 @@ import { getPositioning } from "./Helpers/geoposition";
 import { getWeather } from "./Helpers/weather";
 import Loader from "./components/Loader";
 import SearchLocation from "./components/SearchLocation";
-import { setLocalStorage, getLocalStorage } from "./Hooks/useLocalStorage";
 
 function App() {
   const { addCity, cities, isLoading, setIsLoading } = useSettings();
-  const [weathers, setWeathers] = useState(() => {
-    const savedWeathers = getLocalStorage("weathers");
-    return savedWeathers ? savedWeathers : [];
-  });
+  const [weathers, setWeathers] = useState([]);
   const [error, setError] = useState(null);
   const [selectRegion, setSelectRegion] = useState(false);
+  const [isWeathersLoaded, setIsWeathersLoaded] = useState(false);
 
   useEffect(() => {
-    autoSearchPosition();
+    loadingWeathers().then(() => {
+      if (cities.length) return;
+      autoSearchPosition();
+    });
   }, []);
 
   useEffect(() => {
-    setLocalStorage("weathers", weathers);
-  }, [weathers]);
+    setWeathers(
+      cities.map((city) => weathers.find((item) => item.id === city.id))
+    );
+  }, [cities]);
+
+  const loadingWeathers = async () => {
+    setIsWeathersLoaded(false);
+    const foundedWeathers = await Promise.all(
+      cities.map((item) => getWeather(item.name))
+    );
+    setWeathers(
+      foundedWeathers.map((item, i) => ({ ...item, id: cities[i].id }))
+    );
+    setIsWeathersLoaded(true);
+  };
 
   const autoSearchPosition = async () => {
     setIsLoading(true);
@@ -40,10 +53,10 @@ function App() {
   };
 
   const addWeather = async (city) => {
-    const foundedWeather = await getWeather(city.name);
     const isWeatherExist = weathers.find((item) => item.id === city.id);
     if (isWeatherExist) return;
-    setWeathers([...weathers, { ...foundedWeather, ...city }]);
+    const foundedWeather = await getWeather(city.name);
+    setWeathers([...weathers, { ...foundedWeather, id: city.id }]);
   };
 
   const removeWeather = (city) => {
@@ -72,11 +85,12 @@ function App() {
           }}
         />
       ) : null}
-      {weathers.length ? (
+      {weathers.length && isWeathersLoaded ? (
         <CitiesList
           addWeather={addWeather}
           removeWeather={removeWeather}
           weathers={weathers}
+          loadingWeathers={loadingWeathers}
           setWeathers={setWeathers}
         />
       ) : null}
